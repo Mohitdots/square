@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+enum OrderStatus {
+  RECEIVED
+  SENT_TO_PARCELHIVE
+  LOCKER_ASSIGNED
+  STORE_PICKUP
+  FAILED
+}
+
+enum ApiProvider {
+  PARCELHIVE
+  SQUARE
+}
+
+enum WebhookProvider {
+  PARCELHIVE
+  SQUARE
+}
+
+enum SystemControlType {
+  MAIN
+  PARCELHIVE
+}
+
+model Order {
+  id                  String      @id @default(uuid())
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+
+  squareOrderId       String      @unique
+  squareCustomerId    String?
+  squareLocationId    String?
+  squareOrderPayload  Json
+
+  status              OrderStatus @default(RECEIVED)
+
+  // ParcelHive linkage
+  parcelHiveOrderId   String?
+  integrationNumber   String      @unique
+  parcelHiveLocation  String?
+  depositPin          String?
+  collectPin          String?
+  lockerUid           String?
+  lockerNumber        String?
+  qrCode              String?
+
+  recipientPhone      String?
+  recipientEmail      String?
+
+  startsAt            DateTime?
+  endsAt              DateTime?
+
+  lastError           String?
+
+  apiLogs             ApiLog[]
+  webhookLogs         WebhookLog[]
+
+  @@index([status])
+  @@index([parcelHiveOrderId])
+}
+
+model Locker {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  lockerUid     String   @unique
+  locationUid   String
+  lockerNumber  String?
+
+  isAvailable   Boolean  @default(true)
+  lastSeenAt    DateTime?
+}
+
+model WebhookLog {
+  id            String          @id @default(uuid())
+  createdAt     DateTime        @default(now())
+  provider      WebhookProvider
+
+  path          String
+  headers       Json
+  body          Json?
+  rawBody       Json?
+
+  verified      Boolean         @default(false)
+  verificationError String?
+
+  order         Order?          @relation(fields: [orderId], references: [id])
+  orderId       String?
+}
+
+model ApiLog {
+  id            String      @id @default(uuid())
+  createdAt     DateTime    @default(now())
+  provider      ApiProvider
+
+  method        String
+  url           String
+  requestHeaders Json?
+  requestBody   Json?
+
+  responseStatus Int?
+  responseHeaders Json?
+  responseBody  Json?
+
+  error         String?
+  durationMs    Int?
+
+  order         Order?       @relation(fields: [orderId], references: [id])
+  orderId       String?
+}
+
+model SystemControl {
+  id        Int               @id
+  type      SystemControlType @unique(map: "systemcontrol_type_key")
+  enabled   Boolean
+  reason    String?
+  updatedAt DateTime          @updatedAt
+}
+
+model AdminSettings {
+  id        Int     @id @default(1)
+  accessPin String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+

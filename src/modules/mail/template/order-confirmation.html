@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{STORE_NAME}}</title>
+  </head>
+  <body style="margin: 0; padding: 0; background: #f2f4f5; font-family: Arial, sans-serif">
+    <table
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      bgcolor="#f2f4f5"
+      style="font-family: Arial, sans-serif"
+    >
+      <tr>
+        <td align="center">
+          <table
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            bgcolor="#ffffff"
+            style="max-width: 600px"
+          >
+            <tr>
+              <td align="center" style="background: #546476; height: 140px">
+                <a
+                  href="{{WEBSITE_URL}}"
+                  style="
+                    display: block;
+                    border-radius: 12px;
+                    background: #f9f5e9;
+                    padding: 10px 10px 0;
+                    width: 96px;
+                    height: 96px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    box-sizing: border-box;
+                    border: 2px solid #ffffff;
+                  "
+                >
+                  <img
+                    src="{{CB_LOGO_SRC}}"
+                    width="50"
+                    height="73"
+                    alt="{{STORE_NAME}}"
+                    border="0"
+                    style="display: block; margin: 0 auto"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding: 20px 15px 0; font-size: 18px; color: #333333">
+                <strong>{{STORE_NAME}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding: 20px 15px; font-size: 14px; color: #546476">
+                <strong>Order confirmed</strong>
+              </td>
+            </tr>
+            <tr>
+              <td
+                align="center"
+                style="
+                  padding: 0 15px 20px;
+                  font-size: 13px;
+                  color: #546476;
+                  line-height: 20px;
+                  border-bottom: 1px dashed #e5e5e5;
+                "
+              >
+                Thank you for your purchase! Your order will be ready for pickup soon. Call us or
+                reply to this email if you have any questions.
+              </td>
+            </tr>
+            {{COLLECT_PIN}}
+            <tr>
+              <td align="center" style="padding: 15px 15px 0; font-size: 13px; color: #546476">
+                Estimated Pickup Time
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding: 7px 15px 20px; font-size: 13px; color: #546476">
+                {{PICKUP_TIME}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="{{MAP_URL}}" style="display: block">
+                  <img
+                    src="{{MAP_IMAGE_SRC}}"
+                    width="100%"
+                    alt="Pickup map"
+                    border="0"
+                    style="display: block"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td
+                align="center"
+                style="padding: 20px 15px 7px; font-size: 13px; color: #546476; line-height: 20px"
+              >
+                Pickup location <br />
+                {{PICKUP_ADDRESS}}
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="font-size: 13px; padding: 0 15px 20px">
+                <a
+                  href="tel:{{PICKUP_PHONE_HREF}}"
+                  style="color: #2b7cff; font-size: 13px; text-decoration: underline"
+                  >{{PICKUP_PHONE}}</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding-bottom: 20px; border-bottom: 1px dashed #e5e5e5">
+                <a
+                  href="{{ORDER_STATUS_URL}}"
+                  style="margin: 0 auto; padding: 0; display: block; width: 136px"
+                >
+                  <img
+                    src="{{ORDER_STATUS_BUTTON_SRC}}"
+                    width="136"
+                    height="40"
+                    alt="Order status"
+                    border="0"
+                    style="display: block"
+                  />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td
+                align="center"
+                style="padding: 20px 15px; border-bottom: 1px dashed #e5e5e5; font-size: 34px"
+              >
+                {{FINAL_TOTAL}}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 15px">
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  style="font-size: 13px; color: #546476"
+                >
+                  {{ORDER_ITEMS}} {{DISCOUNT_ROW}}
+                  <tr>
+                    <td colspan="2" style="border-top: 1px dashed #e5e5e5; padding: 10px 0">
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="padding: 7px 0">Purchase Subtotal</td>
+                          <td align="right" style="padding: 7px 0; white-space: nowrap">
+                            {{SUBTOTAL}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 7px 0">VAT</td>
+                          <td align="right" style="padding: 7px 0; white-space: nowrap">{{TAX}}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="border-top: 1px dashed #e5e5e5; padding: 10px 0">
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="color: #000000"><strong>Total</strong></td>
+                          <td align="right" style="color: #000000; white-space: nowrap">
+                            <strong>{{FINAL_TOTAL}}</strong>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 15px; border-bottom: 1px solid #e5e5e5" align="center">
+                <table width="130" cellpadding="0" cellspacing="0" border="0" style="width: 130px">
+                  <tr>
+                    <td align="center">
+                      <a href="{{INSTAGRAM_URL}}">
+                        <img
+                          src="{{INSTAGRAM_LOGO_SRC}}"
+                          width="43"
+                          height="43"
+                          alt="Instagram"
+                          border="0"
+                          style="display: block"
+                        />
+                      </a>
+                    </td>
+                    <td align="center">
+                      <a href="{{WEBSITE_URL}}">
+                        <img
+                          src="{{GLOBE_LOGO_SRC}}"
+                          width="43"
+                          height="43"
+                          alt="Website"
+                          border="0"
+                          style="display: block"
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 20px">
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="font-family: Arial, sans-serif; font-size: 13px; color: #546476"
+                >
+                  <tr>
+                    <td style="padding: 5px 0"><strong>{{PAYMENT_METHOD_LABEL}}</strong></td>
+                    <td align="right" style="padding: 5px 0">{{PAYMENT_TIME}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 5px 0">{{PAYMENT_ICON_HTML}}</td>
+                    <td align="right" style="font-size: 12px; padding: 5px 0">
+                      {{ORDER_SHORT_CODE}}
+                    </td>
+                  </tr>
+                  {{PAYMENT_AUTH_ROW}}
+                  <tr>
+                    <td colspan="2" style="padding: 0 0 10px">
+                      This is not intended to be a VAT invoice.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      colspan="2"
+                      style="
+                        border-bottom: 1px dashed #e5e5e5;
+                        border-top: 1px dashed #e5e5e5;
+                        padding: 10px 0;
+                      "
+                    >
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="padding: 5px 0">&nbsp;</td>
+                          <td align="right" style="padding: 5px 0">VAT Reg.: {{VAT_NUMBER}}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 5px 0">&nbsp;</td>
+                          <td align="right" style="padding: 5px 0">Invoice: {{referenceNumber}}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 10px 0 5px; line-height: 18px">{{CUSTOMER_NAME}}</td>
+                    <td align="right" style="padding: 10px 0 5px; line-height: 18px">
+                      {{CUSTOMER_PHONE}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="padding: 5px 0" align="right">
+                      <a
+                        href="mailto:{{CUSTOMER_EMAIL_HREF}}"
+                        style="color: #2b7cff; text-decoration: underline"
+                        >{{CUSTOMER_EMAIL}}</a
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="background-color: #eef2f5; padding: 20px 15px">
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  style="
+                    font-family: Arial, sans-serif;
+                    font-size: 12px;
+                    color: #546476;
+                    text-align: center;
+                  "
+                >
+                  <tr>
+                    <td style="font-size: 12px; color: #546476; padding: 7px 0">
+                      Payments processed by Squareup Europe Ltd.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 12px; color: #546476; padding: 7px 0">
+                      &copy; {{YEAR}} Squareup International Ltd.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 12px; color: #546476; padding: 7px 0">
+                      Please contact {{STORE_NAME}} about its privacy practices. &nbsp;
+                      <a
+                        href="{{ORDER_STATUS_URL}}"
+                        style="color: #546476; text-decoration: underline"
+                        >Not your receipt?</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 12px; color: #546476; padding: 7px 0">
+                      Retain this copy for statement verification.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 7px 0 0">
+                      <img
+                        src="{{SQUARE_LOGO_SRC}}"
+                        width="42"
+                        height="42"
+                        alt="Square"
+                        border="0"
+                        style="display: block; margin: 0 auto"
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
